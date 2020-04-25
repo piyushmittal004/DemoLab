@@ -1,7 +1,7 @@
 export class CellData{
-    canid:string;
-    rackid:string;
-    boxid:string;
-    cellid:string[];
-    sampleno:string;
+    canId:string;
+    rackId:string;
+    boxId:string;
+    cellId:number[];
+    sampleNo:number;
 }

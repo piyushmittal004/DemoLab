@@ -17,6 +17,7 @@ export class RackEnterComponent implements OnInit {
     this.select_rack=null;
     this.vails=false;
     this.search=false;
+    this.service.authenticate().subscribe(response=>service.JWT=response);
    }
   select_can;
   select_rack;
@@ -30,11 +31,11 @@ export class RackEnterComponent implements OnInit {
 
   onSubmit()
   {
-    this.cell.canid=this.select_can;
-    this.cell.canid=this.select_rack;
-    this.cell.boxid=this.select_box;
-    this.cell.cellid=this.select_cell;
-    this.cell.sampleno=this.sample;
+    this.cell.canId=this.select_can;
+    this.cell.rackId=this.select_rack;
+    this.cell.boxId=this.select_box;
+    this.cell.cellId=this.select_cell;
+    this.cell.sampleNo=this.sample;
     this.service.sendRackData(this.cell).subscribe();
     alert("You have entered "+"Canister "+this.select_can+" Cells "+ this.select_cell +" Sample No "+this.sample);
     this.select_box=null;
@@ -46,6 +47,7 @@ export class RackEnterComponent implements OnInit {
 
   onSearch()
   {
+    console.log(this.sample);
     this.service.searchRack(this.sample).subscribe(response => this.fetchData(response));
     alert('OK!!');
   }
